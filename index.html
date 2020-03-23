@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Stochastic Block Models with R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Nick Strayer" />
+    <meta name="date" content="2020-03-23" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+class: middle
+
+## Building a software package in tandem with machine learning methods research can result in both more rigorous code and more rigorous research. 
+
+_Nick Strayer, PhD Candidate, Vanderbilt Biostatistics_
+&lt;!-- ![:centerPic](figs/title_slide.png) --&gt;
+
+
+---
+
+class: middle
+
+# Layout
+
+
+- What am I selling?
+- The Why
+- The Process
+- The Product
+
+---
+# About Me
+
+.pull-left[
+
+## Career
+- Previously:
+  - Software Engineering w/ Javascript
+  - Worked for NY Times Graphics Department
+- Now:
+  - PhD. Candidate, Vanderbilt Biostatistics
+  - Focusing on Visualization and Unsupervized learning
+]
+
+.pull-right[
+## Links
+- Blog at [LiveFreeOrDichotomize.com](https://livefreeordichotomize.com/)
+- Tweet at [@nicholasStrayer](https://twitter.com/NicholasStrayer)
+- Code at [github.com/nstrayer](https://github.com/nstrayer)
+]
+
+
+---
+class: middle
+
+
+## What am I selling?
+
+
+.pull-left[
+### An Idea 
+
+.center[
+.iconed[💭]
+]
+
+Building an R package alongside a research project serves to strengthen both the package and the research. 
+]
+.pull-right[
+### A Thing 
+
+.center[
+.iconed[📦]
+]
+
+`sbmR`: an R package to perform uncertainty-aware unsupervised clustering of graph data. 
+]
+
+
+---
+
+
+
+class:middle
+
+# The Why
+
+
+---
+
+class: middle
+
+
+# But first... Jargon Break!
+
+---
+
+# Bi or Poly-partite networks
+
+&gt; Networks that have nodes of multiple distinct types where connections can't form between nodes of the same type. 
+
+![:centerPic 60](figs/bipartite_network.svg)
+
+---
+
+# The __S__tochastic __B__lock __M__odel?
+
+A network model to cluster nodes into "blocks". 
+
+![:centerPic 62](figs/sbm_explained.svg)
+
+
+---
+
+
+# An equation for validity
+
+&lt;div style="margin-top:-75px;"&gt;
+![:centerPic 85](figs/sbm_formula.svg)
+&lt;/div&gt;
+
+---
+
+# Really why I showed an equation
+
+![:centerPic 32](figs/poisson_tattoo.png)
+
+
+---
+class: middle
+
+
+# Why SBMs
+
+.pull-left[
+- Working with Electronic Health Records (EHR) data
+
+- Questions arise like "who are these people similar to and why?"
+
+- Tried Deep Learning
+  - Lack of interpretability
+  - Needed specialization for bipartite networks
+
+- Needed method that acknowledges the limitations of the data. 
+]
+.pull-right[
+![:centerPic 100](figs/why_block_models.png)
+]
+
+
+---
+class: middle
+
+# Why write a package?
+
+.pull-left[
+Graph-Tool in Python fits SBMs but...
+- Lab uses R
+- We're focused on uncertainty
+- Needed to develop custom methods for bipartite networks etc. 
+
+]
+.pull-right[
+.center[.iconed[📦]]
+]
+
+	
+	
+---
+class: middle
+
+# The Process
+
+---
+class: middle
+
+# Getting to the starting line
+
+---
+class: middle
+
+## Deciding supporting libraries
+.pull-left[
+
+- iGraph is a monolith
+  - Adding computationally heavy steps in R brought it to a halt 
+  
+  
+- Write algorithms from scratch using Rcpp
+ 
+  
+]
+.pull-right[
+  ![:centerPic 100](figs/igraph_logo.png)
+]
+
+---
+
+## Scafolding package with `usethis`
+
+.pull-left[
+
+_Use good defaults to setup a solid foundation_
+
+![:spacePx 15]
+
+`usethis::use_testthat()`
+- No excuses not to have tests
+
+`usethis::use_roxygen_md()`
+- Write your documentation with as little friction to publication as possible
+  
+`usethis::use_data_raw()`
+- Setup a consistent workflow for simulations and testing datasets
+  
+]
+.pull-right[
+  ![:centerPic 60](https://usethis.r-lib.org/reference/figures/logo.png)
+]
+
+
+
+
+	
+
+
+---
+class: middle
+
+# Tests and simulated data catch errors
+
+
+.pull-left[
+__Software `\(\to\)` Unit Tests__
+
+- Toy examples to test basic functions 
+- Builds strong foundations for larger models
+- Solidifies intuition about behavior
+
+![:space 5]
+
+![:centerPic 100](figs/small_networks.png)
+]
+
+.pull-right[
+__Statistics `\(\to\)` Simulated Data__
+- Stochastic data _will_ find your edge cases
+- Gives an idea of real-world performance
+
+![:space 7]
+
+![:centerPic 100](figs/clustered_network.png)
+
+]
+
+
+---
+class: middle
+
+# Getting speedy with it
+
+.bullet_emoji[🗺] Following the equations in their exact form is inefficient.
+
+
+&lt;div class = "center", style = "margin-top:-5px; margin-bottom:-70px;"&gt;
+
+&lt;img src = "figs/entropy_inefficient.png", height = 350&gt;
+&lt;/div&gt;
+
+
+.pull-left[
+.bullet_emoji[🛠] Reworking for efficiency leads to better understanding
+]
+.pull-right[
+.bullet_emoji[🧐] Question the purpose of every operation, they are expensive
+]
+
+
+
+
+---
+
+# Documentation as tests
+
+.pull-left[
+
+![:spacePx 50]
+
+__Constantly updating documentation...__
+
+![:spacePx 40]
+
+
+.bullet_emoji[📷] Keeps you focused on the big picture
+
+
+![:spacePx 50]
+
+.bullet_emoji[👃] Is an informal sniff-test for results
+]
+
+.pull-right[
+![:centerPic 95](figs/weird_entropy.png)
+]
+
+
+
+---
+
+# Vignette or perish
+
+.pull-left[
+
+![:spacePx 60]
+
+__Learning resources__
+
+.bullet_emoji[🥀] If no-one knows __how__ to use your package/method no-one __will__ use it. 
+![:spacePx 80]
+
+__Covertly writing__
+
+.bullet_emoji[🖍] Once you're done, you have written a lot
+
+]
+
+
+&lt;div class = "pull-right" style = "margin-top: -5em;"&gt;
+&lt;img src = "figs/vignette_length.png" height = 600&gt;
+&lt;/div&gt;
+
+---
+
+class: middle
+
+# The Product
+
+---
+
+# What exactly is `sbmR`?
+
+.pull-left[
+
+![:spacePx 90]
+
+- Native R package (kinda)
+
+- Fits SBMs
+
+- Investigates uncertainty of found structure by sampling from bayesian posterior
+
+- Provides (a growing list of) visualizations to communicate results
+
+![:spacePx 30]
+
+
+### [tbilab.github.io/sbmR/](https://tbilab.github.io/sbmR/)
+
+]
+
+.pull-right[
+.shadowed[
+![:centerPic 85](figs/sbmr_pkgdown.png)
+]
+]
+
+
+---
+class: middle
+
+# What is needed to use it?
+
+.pull-left[
+### Data
+
+.bullet_emoji[✔️] Data that can be represented as nodes and edges between those nodes
+- Patients with diagnoses
+- Genomes with mutations
+- Social relationships
+- ...
+
+.bullet_emoji[🚫] Does not (yet) support non-discrete edges
+- Correlations between variables
+- Distances between cities
+- ...
+]
+
+
+
+.pull-right[
+
+### __Mentality__
+
+
+.bullet_emoji[🍱] Interest in __how__ and __why__ your data cluster together
+
+![:spacePx 90]
+
+.bullet_emoji[⚖️] A desire to understand how stable clusters are
+
+]
+
+
+	
+
+---
+class: middle
+
+# A quick demo 
+
+---
+
+## Simulate a network
+
+
+.left-code[
+
+Let's simulate a dense network with three blocks and 40 nodes per block.
+
+```r
+library(magrittr)
+library(tidyverse)
+library(sbmR)
+
+k &lt;- 3    
+n_k &lt;- 40 
+
+network &lt;- sim_basic_block_network(
+  n_blocks = k,     
+  n_nodes_per_block = n_k
+)
+
+visualize_network(network)
+```
+]
+
+.right-plot[
+
+]
+
+
+---
+
+## Find optimal MCMC initialization
+
+
+.left-code[
+Next we find the optimal (closest to median of posterior) starting point for our MCMC
+
+```r
+# Setup SBM from data
+my_sbm &lt;- create_sbm(network)
+
+# Run agglomerative collapsing
+collapse_results &lt;- my_sbm %&gt;%
+  collapse_blocks(sigma = 1.01)
+
+# Visualize method used to 
+# choose best state from
+# results
+collapse_results %&gt;% 
+  visualize_collapse_results(
+    heuristic = 'delta_ratio'
+  ) +
+  xlim(0,15) +
+  geom_vline(xintercept = k)
+```
+]
+
+.right-plot[
+
+
+
+]
+
+
+
+---
+
+## Sanity check...
+
+We can join the model's state after our collapse with the true generating data's blocks to see how well the collapsing algorithm fit the data. 
+.left-code[
+
+
+```r
+# Model state after merge
+merged_state &lt;- my_sbm %&gt;% 
+  get_state() %&gt;% 
+  select(id, parent)
+
+# Join with true block info
+left_join(
+  network$nodes,
+  merged_state,
+  by = "id"
+) %&gt;% 
+  rename(inferred = parent) %$% 
+  table(inferred, block) 
+```
+]
+
+.right-plot[
+
+]
+
+---
+
+## Sampling from posterior
+
+
+.left-code[
+
+Run MCMC sweeps from collapse starting point to investigate the posterior structure.
+
+```r
+sweep_results &lt;- my_sbm %&gt;% 
+  mcmc_sweep(num_sweeps = 75, 
+             eps = 0.25, 
+             track_pairs = TRUE)
+
+# Plot Sweep Results
+sweep_results$sweep_info %&gt;% 
+  mutate(sweep = 1:n()) %&gt;%
+  pivot_longer(
+    c(entropy_delta,
+      num_nodes_moved)
+  ) %&gt;% 
+  ggplot(aes(x = sweep, 
+             y = value)) +
+  geom_line() +
+  facet_grid(name~., 
+             scales = "free_y")
+```
+]
+
+.right-plot[
+
+
+]
+
+---
+
+## Investigating Uncertainty in clustering
+
+.left-code[
+
+Plot the pairwise probability two nodes residing in the same block
+
+```r
+sweep_results$pairing_counts %&gt;% 
+  ggplot(aes(x = node_a, 
+             y = node_b)) +
+  geom_raster(
+    aes(fill = proportion_connected)
+  ) +
+  theme(
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )
+```
+]
+
+.right-plot[
+
+
+]
+
+
+---
+
+## Concensus-SNE
+
+.left-code[
+
+Package function to visualize the pairwise node to node block similarity with a network. 
+
+```r
+sweep_results %&gt;% 
+  visualize_propensity_network()
+```
+]
+
+.right-plot[
+
+
+]
+
+
+---
+# Future plans
+
+.pull-left[
+## Node-level uncertainty 
+Determine which values are structural outliers
+]
+	
+.pull-right[
+## Lots of visualizations
+Visualization based inference for highly complex models
+]
+
+---
+
+# The Appendix
+
+## Thanks to
+.pull-left[
+- My advisor Yaomin Xu
+- Lab Biostatistician Siwei Zheng
+- Other lab members for thoughtful comments during entire process
+- Vanderbilt Biostatistics Development Grant
+- My Cat (and wife)
+]
+
+.pull-right[
+![:centerPic 70](figs/thanks_photo.png)
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"slideNumberFormat": "nickstrayer.me/enar_2020/#%current% of %total%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
