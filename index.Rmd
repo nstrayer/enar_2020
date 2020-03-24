@@ -58,12 +58,12 @@ class: middle
 
 ## Career
 Previously:
-- Software Engineering w/ Javascript
-- Worked for NY Times Graphics Department
+- Software Engineering
+- NY Times Graphics Department
 
 Now:
-- PhD. Candidate, Vanderbilt Biostatistics
-- Focusing on Visualization and Unsupervised learning
+- PhD. Candidate, Biostatistics
+- Focused on Visualization and Unsupervised learning
 ]
 
 .pull-right[
@@ -184,7 +184,7 @@ class: middle
 ![:spacePx 50]
 - Working with Electronic Health Records (EHR) data
 
-- Questions arise like "who are these people similar to and why?"
+- Questions like "who are these people similar to and why?"
 
 - Needed method that acknowledges the limitations of the data. 
 ]
@@ -204,7 +204,7 @@ class: middle
 
 No tool existed that:
 
-- An R package
+- Was for R
 
 - Focused on uncertainty
 
@@ -235,12 +235,12 @@ class: middle
 
 ![:spacePx 20]
 
-- iGraph is a monolith
-  - Adding computationally heavy steps in R brought it to a halt 
+iGraph is a monolith
+- Adding computationally heavy steps in R brought it to a halt 
   
 ![:spacePx 20]
   
-- Decided to write algorithms from scratch using Rcpp
+Decided to write algorithms from scratch using `Rcpp`
  
   
 ]
@@ -288,6 +288,12 @@ No excuses to not have tests...
 Write your documentation with as little friction to publication as possible
 
 ]
+.pull-right[
+![:spacePx 50]
+.shadowed[
+![:centerPic](figs/roxygen.png)
+]
+]
 
 
 ---
@@ -302,6 +308,12 @@ Setup a consistent workflow for simulations and testing datasets
   
 ]
 
+.pull-right[
+.shadowed[
+![:centerPic 100](figs/simulated_data.png)
+]
+]
+
 
 
 
@@ -311,23 +323,22 @@ class: middle
 # Finding errors early .bullet_emoji[🕵️‍♀️]
 
 ---
-class: middle
 
 ## Unit tests build understanding
 
 
 .pull-left[
 
-![:space 5]
+![:spacePx 50]
 
 - Toy examples to test basic functions 
 
-![:space 5]
+![:spacePx 30]
 
 - Builds strong foundations for larger models
 
 
-![:space 5]
+![:spacePx 30]
 
 
 - Solidifies intuition about behavior
@@ -335,7 +346,9 @@ class: middle
 ]
 .pull-right[
 
-![:centerPic 100](figs/small_networks.png)
+<div class = "shadowed" style="margin-top: -5rem; margin-right: -1rem;">
+![:centerPic 82](figs/unit_test_notes.png)
+</div>
 ]
 
 
@@ -473,66 +486,125 @@ class: middle
 
 ---
 
-# What exactly is `sbmR`?
+# `sbmR`
 
 .pull-left[
 
-![:spacePx 90]
+![:spacePx 70]
 
-- R package (kinda) for SBMs
+- R package to fit SBMs
 
 - Investigates uncertainty of found structure by sampling from bayesian posterior
 
 - Provides (a growing list of) visualizations to communicate results
 
 ![:spacePx 30]
-
-
-### [tbilab.github.io/sbmR/](https://tbilab.github.io/sbmR/)
-
 ]
 
 .pull-right[
+![:centerPic 90](figs/multiple_fits.png)
+]
+
+
+---
+
+## A pkgdown website
+
+.pull-left[
+
+![:spacePx 40]
+
+### [tbilab.github.io/sbmR/](https://tbilab.github.io/sbmR/)
+
+![:spacePx 20]
+
+- All the docs and vignettes accessible online
+
+- Don't have to download entire package to see if it does what you want
+]
+
+
+.pull-right[
+
+
 .shadowed[
 ![:centerPic 85](figs/sbmr_pkgdown.png)
 ]
 ]
 
+---
+
+## Manuscripts
+
+
+.pull-left[
+![:spacePx 20]
+
+- Glue together your work
+
+![:spacePx 20]
+
+- "Scripts available upon request" becomes `install_github(...)`
+
+![:spacePx 20]
+
+- Not the only avenue for dissemination 
+]
+
+.pull-right[
+![:spacePx 100]
+
+.shadowed[
+![:centerPic](figs/manuscript_submission.png)
+]
+]
 
 ---
 class: middle
 
-# What is needed to use it?
+# The dangers
 
-.pull-left[
-### Data
+---
 
-.bullet_emoji[✔️] Data that can be represented as nodes and edges between those nodes
-- Patients with diagnoses
-- Genomes with mutations
-- Social relationships
-- ...
+## Too much time is spent fiddling
 
-.bullet_emoji[🚫] Does not (yet) support non-discrete edges
-- Correlations between variables
-- Distances between cities
-- ...
-]
+![:spacePx 60]
 
+- `usethis` and strong defaults help a lot
 
+![:spacePx 60]
 
-.pull-right[
+- Ask "would I end up doing this later anyways?"
 
-### __Mentality__
+![:spacePx 60]
+
+- Set a list of requirements and make you way through it
 
 
-.bullet_emoji[🍱] Interest in __how__ and __why__ your data cluster together
+---
 
-![:spacePx 90]
+## My project isn't strictly methods development
 
-.bullet_emoji[⚖️] A desire to understand how stable clusters are
+![:spacePx 100]
+- The package infrastructure works well for general data-science projects
 
-]
+![:spacePx 60]
+- See [Karthik Ram's work on compendiums](http://inundata.org/talks/rstd19/#/). 
+
+---
+
+## I've never made a package before!
+
+![:spacePx 80]
+
+- It's easier than you may think:
+  - http://r-pkgs.had.co.nz/ 
+  
+  
+![:spacePx 60]
+
+- If you want people to use your method, an R package is the most effective way to do so
+
 
 ---
 
