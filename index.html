@@ -27,32 +27,12 @@ class: middle
 # Layout
 
 
-- What am I selling?
-- The Why 
-- The Process
-- The Product
+- What I'm selling
+- Getting to the starting line
+- Setting up
+- The journey
+- The destination
 
----
-# About Me
-
-.pull-left[
-
-## Career
-Previously:
-- Software Engineering
-- NY Times Graphics Department
-
-Now:
-- PhD. Candidate, Biostatistics
-- Focused on Visualization and Unsupervised learning
-]
-
-.pull-right[
-## Links
-- Blog at [LiveFreeOrDichotomize.com](https://livefreeordichotomize.com/)
-- Tweet at [@nicholasStrayer](https://twitter.com/NicholasStrayer)
-- Code at [github.com/nstrayer](https://github.com/nstrayer)
-]
 
 
 ---
@@ -65,7 +45,7 @@ class: middle
 class: middle 
 
 
-## An Idea 
+## An idea 
 
 .pull-left[
 
@@ -85,7 +65,7 @@ Building an R package alongside a research project serves to strengthen both the
 ---
 class: middle
 
-## A Thing 
+## A thing 
 
 .pull-left[
 
@@ -107,7 +87,8 @@ class: middle
 
 class:middle
 
-# The Why
+# Getting to the starting line
+
 
 Why a project gets started
 
@@ -116,15 +97,7 @@ Why a project gets started
 class: middle
 
 
-# But first... Jargon Break!
-
----
-
-# Bi or Poly-partite networks
-
-&gt; Networks that have nodes of multiple distinct types where connections can't form between nodes of the same type. 
-
-![:centerPic 60](figs/bipartite_network.svg)
+# But first... jargon break!
 
 ---
 
@@ -155,7 +128,7 @@ A network model to cluster nodes into "blocks".
 class: middle
 
 
-## Why did I start this project?
+## Deciding to start a project
 
 ---
 # Why SBMs
@@ -177,11 +150,12 @@ class: middle
 
 
 ---
-class: middle
 
 # Why write a package?
 
 .pull-left[
+
+![:spacePx 70]
 
 No tool existed that:
 
@@ -193,25 +167,22 @@ No tool existed that:
 
 ]
 .pull-right[
+![:spacePx 80]
+
 .center[.iconed[📦]]
 ]
 
 	
-	
 ---
 class: middle
 
-# The Process
-
----
-class: middle
-
-# Laying your foundation 🧱
+# Setting up
+## or, laying a solid foundation 🧱
 
 ---
 class: middle
 
-## Deciding supporting libraries
+## Choosing dependencies
 .pull-left[
 
 ![:spacePx 20]
@@ -295,13 +266,34 @@ Setup a consistent workflow for simulations and testing datasets
 ]
 ]
 
+---
+class: middle
+
+.pull-left[
+![:spacePx 70]
+# The journey 
+]
+
+.pull-right[
+.iconed[🚂]
+]
 
 
 
 ---
 class: middle
 
-# Finding errors early .bullet_emoji[🕵️‍♀️]
+
+.pull-left[
+![:spacePx 70]
+## Finding errors early
+]
+
+.pull-right[
+.iconed[🕵️‍]
+]
+
+
 
 ---
 
@@ -334,12 +326,12 @@ class: middle
 
 
 ---
-class: middle
 
 ## Simulated data exposes software flaws
 
 
 .pull-left[
+![:spacePx 60]
 
 ![:space 10]
 
@@ -357,6 +349,7 @@ class: middle
 
 ]
 .pull-right[
+![:spacePx 90]
 
 ![:centerPic 100](figs/clustered_network.png)
 
@@ -365,11 +358,15 @@ class: middle
 ---
 class: middle
 
-# Getting speedy with it .bullet_emoji[🚀]
+.pull-left[
+![:spacePx 60]
+## Getting speedy with it
+]
+.pull-right[
+.iconed[🚀]
+]
 
 ---
-class: middle
-
 
 ## Be a translator
 
@@ -377,18 +374,20 @@ class: middle
 
 
 .pull-left[
+![:spacePx 80]
 
-![:spacePx 40]
 .bullet_emoji[🧮] Written math is not optimized for the binary world of computers
 
-![:spacePx 50]
+![:spacePx 60]
 
 
 .bullet_emoji[🛠] Reworking for efficiency leads to better understanding
 
 ]
 .pull-right[
-![:centerPic 80](figs/logic_gates.png)
+![:spacePx 50]
+
+![:centerPic 90](figs/logic_gates.png)
 ]
 
 ---
@@ -412,7 +411,17 @@ class: middle
 ---
 class: middle
 
-# You still have to write... .bullet_emoji[✍️]
+
+.pull-left[
+
+_Speaking of copy editing..._
+
+![:spacePx 60]
+## You still have to write
+]
+.pull-right[
+.iconed[✍️]
+]
 
 ---
 
@@ -467,15 +476,28 @@ class: middle
 
 class: middle
 
-# The Product
+
+.pull-left[
+![:spacePx 70]
+# The destination
+]
+.pull-right[
+.iconed[🏆]
+]
 
 ---
 
-# `sbmR`
+## A package
+
+
+![:spacePx 10]
+
+
 
 .pull-left[
+## `sbmR`
 
-![:spacePx 70]
+![:spacePx 10]
 
 - R package to fit SBMs
 
@@ -497,13 +519,16 @@ class: middle
 
 .pull-left[
 
-![:spacePx 40]
+![:spacePx 60]
 
-### [tbilab.github.io/sbmR/](https://tbilab.github.io/sbmR/)
 
+
+- `usethis::use_pkgdown()`
 ![:spacePx 20]
 
 - All the docs and vignettes accessible online
+
+![:spacePx 20]
 
 - Don't have to download entire package to see if it does what you want
 ]
@@ -511,9 +536,10 @@ class: middle
 
 .pull-right[
 
+### [tbilab.github.io/sbmR/](https://tbilab.github.io/sbmR/)
 
 .shadowed[
-![:centerPic 85](figs/sbmr_pkgdown.png)
+![:centerPic 70](figs/sbmr_pkgdown.png)
 ]
 ]
 
@@ -547,7 +573,17 @@ class: middle
 ---
 class: middle
 
+
+
+.pull-left[
+![:spacePx 70]
 # The dangers
+]
+.pull-right[
+.iconed[👹]
+]
+
+
 
 ---
 
@@ -593,8 +629,6 @@ class: middle
 
 ---
 
-# The Appendix
-
 ## Thanks to
 .pull-left[
 - My advisor Yaomin Xu
@@ -602,6 +636,11 @@ class: middle
 - Other lab members for thoughtful comments during entire process
 - Vanderbilt Biostatistics Development Grant
 - My Cat (and wife)
+
+## Links
+- Blog: [LiveFreeOrDichotomize.com](https://livefreeordichotomize.com/)
+- Tweet: [@nicholasStrayer](https://twitter.com/NicholasStrayer)
+- Code: [github.com/nstrayer](https://github.com/nstrayer)
 ]
 
 .pull-right[
