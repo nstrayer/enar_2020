@@ -245,7 +245,8 @@ Decided to write algorithms from scratch using `Rcpp`
   
 ]
 .pull-right[
-  ![:centerPic 100](figs/igraph_logo.png)
+![:spacePx 50]
+![:centerPic 100](figs/igraph_logo.png)
 ]
 
 ---
@@ -289,12 +290,11 @@ Write your documentation with as little friction to publication as possible
 
 ]
 .pull-right[
-![:spacePx 50]
-.shadowed[
-![:centerPic](figs/roxygen.png)
-]
-]
 
+<div class = "shadowed" style="margin-top: -3rem;">
+![:centerPic 82](figs/roxygen.png)
+</div>
+]
 
 ---
 
@@ -473,10 +473,14 @@ class: middle
 
 ]
 
+.pull-right[
 
-<div class = "pull-right" style = "margin-top: -5em;">
-<img src = "figs/vignette_length.png" height = 600>
+<div style="margin-top: -7rem; text-align: right;">
+<img src='figs/vignette_length.png' width = 61%/>
 </div>
+]
+
+
 
 ---
 
