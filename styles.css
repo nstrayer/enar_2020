@@ -3,23 +3,27 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
 }
 
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
 }
 
+.remark-slide-content {
+  font-size: 25px;
+}
 
 .remark-slide-content h1 {
-    font-size: 40px;
+    font-size: 1.7em;
 }
 
 .remark-slide-content h2 {
-    font-size: 35px;
+    font-size: 1.4em;
 }
 
 .remark-slide-content h3 {
-    font-size: 30px;
+    font-size: 1.2em;
 }
 
 .small_text {
@@ -35,7 +39,7 @@ h1, h2, h3 {
 }
 
 .iconed {
-  font-size: 7rem;
+  font-size: 9rem;
 }
 
 .left-code {
@@ -44,6 +48,7 @@ h1, h2, h3 {
   height: 92%;
   float: left;
 }
+
 .right-plot {
   width: 60%;
   float: right;

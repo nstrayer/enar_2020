@@ -18,7 +18,6 @@ class: middle
 ## Building a software package in tandem with machine learning methods research can result in both more rigorous code and more rigorous research. 
 
 _Nick Strayer, PhD Candidate, Vanderbilt Biostatistics_
-&lt;!-- ![:centerPic](figs/title_slide.png) --&gt;
 
 
 ---
@@ -29,7 +28,7 @@ class: middle
 
 
 - What am I selling?
-- The Why
+- The Why 
 - The Process
 - The Product
 
@@ -39,12 +38,13 @@ class: middle
 .pull-left[
 
 ## Career
-- Previously:
-  - Software Engineering w/ Javascript
-  - Worked for NY Times Graphics Department
-- Now:
-  - PhD. Candidate, Vanderbilt Biostatistics
-  - Focusing on Visualization and Unsupervized learning
+Previously:
+- Software Engineering w/ Javascript
+- Worked for NY Times Graphics Department
+
+Now:
+- PhD. Candidate, Vanderbilt Biostatistics
+- Focusing on Visualization and Unsupervised learning
 ]
 
 .pull-right[
@@ -59,27 +59,46 @@ class: middle
 class: middle
 
 
-## What am I selling?
+# What am I selling?
 
+---
+class: middle 
+
+
+## An Idea 
 
 .pull-left[
-### An Idea 
 
+![:spacePx 80]
+Building an R package alongside a research project serves to strengthen both the package and the research. 
+
+]
+
+.pull-right[
 .center[
 .iconed[💭]
 ]
-
-Building an R package alongside a research project serves to strengthen both the package and the research. 
 ]
-.pull-right[
-### A Thing 
 
+
+
+---
+class: middle
+
+## A Thing 
+
+.pull-left[
+
+![:spacePx 80]
+`sbmR`: an R package to perform uncertainty-aware unsupervised clustering of graph data. 
+]
+
+.pull-right[
 .center[
 .iconed[📦]
 ]
-
-`sbmR`: an R package to perform uncertainty-aware unsupervised clustering of graph data. 
 ]
+
 
 
 ---
@@ -90,6 +109,7 @@ class:middle
 
 # The Why
 
+Why a project gets started
 
 ---
 
@@ -135,20 +155,23 @@ A network model to cluster nodes into "blocks".
 class: middle
 
 
+## Why did I start this project?
+
+---
 # Why SBMs
 
 .pull-left[
+
+![:spacePx 50]
 - Working with Electronic Health Records (EHR) data
 
 - Questions arise like "who are these people similar to and why?"
 
-- Tried Deep Learning
-  - Lack of interpretability
-  - Needed specialization for bipartite networks
-
 - Needed method that acknowledges the limitations of the data. 
 ]
 .pull-right[
+![:spacePx 50]
+
 ![:centerPic 100](figs/why_block_models.png)
 ]
 
@@ -159,10 +182,14 @@ class: middle
 # Why write a package?
 
 .pull-left[
-Graph-Tool in Python fits SBMs but...
-- Lab uses R
-- We're focused on uncertainty
-- Needed to develop custom methods for bipartite networks etc. 
+
+No tool existed that:
+
+- An R package
+
+- Focused on uncertainty
+
+- Allowed us to develop custom methods for bipartite networks etc. 
 
 ]
 .pull-right[
@@ -179,7 +206,7 @@ class: middle
 ---
 class: middle
 
-# Getting to the starting line
+# Laying your foundation 🧱
 
 ---
 class: middle
@@ -187,11 +214,14 @@ class: middle
 ## Deciding supporting libraries
 .pull-left[
 
+![:spacePx 20]
+
 - iGraph is a monolith
   - Adding computationally heavy steps in R brought it to a halt 
   
+![:spacePx 20]
   
-- Write algorithms from scratch using Rcpp
+- Decided to write algorithms from scratch using Rcpp
  
   
 ]
@@ -200,100 +230,184 @@ class: middle
 ]
 
 ---
-
-## Scafolding package with `usethis`
+class: middle
 
 .pull-left[
 
+![:spacePx 90]
+
+## Scafolding with `usethis`
+
 _Use good defaults to setup a solid foundation_
 
-![:spacePx 15]
-
-`usethis::use_testthat()`
-- No excuses not to have tests
-
-`usethis::use_roxygen_md()`
-- Write your documentation with as little friction to publication as possible
-  
-`usethis::use_data_raw()`
-- Setup a consistent workflow for simulations and testing datasets
-  
 ]
+
 .pull-right[
   ![:centerPic 60](https://usethis.r-lib.org/reference/figures/logo.png)
 ]
 
 
+---
+
+## `usethis::use_testthat()`
+
+.pull-left[
+![:spacePx 180]
+No excuses to not have tests...
+]
+.pull-right[
+![:centerPic ](figs/test_that.png)
+]
+
+---
+## `usethis::use_roxygen_md()`
+
+.pull-left[
+
+![:spacePx 160]
+
+Write your documentation with as little friction to publication as possible
+
+]
 
 
-	
+---
+
+## `usethis::use_data_raw()`
+
+.pull-left[
+
+![:spacePx 170]
+
+Setup a consistent workflow for simulations and testing datasets
+  
+]
+
+
 
 
 ---
 class: middle
 
-# Tests and simulated data catch errors
+# Finding errors early .bullet_emoji[🕵️‍♀️]
+
+---
+class: middle
+
+## Unit tests build understanding
 
 
 .pull-left[
-__Software `\(\to\)` Unit Tests__
-
-- Toy examples to test basic functions 
-- Builds strong foundations for larger models
-- Solidifies intuition about behavior
 
 ![:space 5]
+
+- Toy examples to test basic functions 
+
+![:space 5]
+
+- Builds strong foundations for larger models
+
+
+![:space 5]
+
+
+- Solidifies intuition about behavior
+
+]
+.pull-right[
 
 ![:centerPic 100](figs/small_networks.png)
 ]
 
-.pull-right[
-__Statistics `\(\to\)` Simulated Data__
+
+---
+class: middle
+
+## Simulated data exposes software flaws
+
+
+.pull-left[
+
+![:space 10]
+
 - Stochastic data _will_ find your edge cases
+
+
+![:space 5]
+
+
 - Gives an idea of real-world performance
 
-![:space 7]
+![:space 5]
+
+- Forces you to think about scope early
+
+]
+.pull-right[
 
 ![:centerPic 100](figs/clustered_network.png)
 
 ]
 
+---
+class: middle
+
+# Getting speedy with it .bullet_emoji[🚀]
 
 ---
 class: middle
 
-# Getting speedy with it
 
-.bullet_emoji[🗺] Following the equations in their exact form is inefficient.
+## Be a translator
 
 
-&lt;div class = "center", style = "margin-top:-5px; margin-bottom:-70px;"&gt;
-
-&lt;img src = "figs/entropy_inefficient.png", height = 350&gt;
-&lt;/div&gt;
 
 
 .pull-left[
+
+![:spacePx 40]
+.bullet_emoji[🧮] Written math is not optimized for the binary world of computers
+
+![:spacePx 50]
+
+
 .bullet_emoji[🛠] Reworking for efficiency leads to better understanding
+
 ]
 .pull-right[
-.bullet_emoji[🧐] Question the purpose of every operation, they are expensive
+![:centerPic 80](figs/logic_gates.png)
 ]
+
+---
+class: middle
+
+## Be a copy-editor
+
+![:space 3]
+
+
+.bullet_emoji[🧐] Question the purpose of every operation, they are expensive
+
+![:space 5]
+
+![centerPic 70](figs/entropy_inefficient.png)
+
 
 
 
 
 ---
+class: middle
 
-# Documentation as tests
+# You still have to write... .bullet_emoji[✍️]
+
+---
+
+# Doc driven development
 
 .pull-left[
 
-![:spacePx 50]
-
-__Constantly updating documentation...__
-
-![:spacePx 40]
+![:spacePx 100]
 
 
 .bullet_emoji[📷] Keeps you focused on the big picture
@@ -301,11 +415,11 @@ __Constantly updating documentation...__
 
 ![:spacePx 50]
 
-.bullet_emoji[👃] Is an informal sniff-test for results
+.bullet_emoji[👃] An informal sniff-test for results
 ]
 
 .pull-right[
-![:centerPic 95](figs/weird_entropy.png)
+![:centerPic 100](figs/weird_entropy.png)
 ]
 
 
@@ -316,14 +430,12 @@ __Constantly updating documentation...__
 
 .pull-left[
 
-![:spacePx 60]
+![:spacePx 80]
 
-__Learning resources__
 
 .bullet_emoji[🥀] If no-one knows __how__ to use your package/method no-one __will__ use it. 
 ![:spacePx 80]
 
-__Covertly writing__
 
 .bullet_emoji[🖍] Once you're done, you have written a lot
 
@@ -348,9 +460,7 @@ class: middle
 
 ![:spacePx 90]
 
-- Native R package (kinda)
-
-- Fits SBMs
+- R package (kinda) for SBMs
 
 - Investigates uncertainty of found structure by sampling from bayesian posterior
 
@@ -403,206 +513,6 @@ class: middle
 
 .bullet_emoji[⚖️] A desire to understand how stable clusters are
 
-]
-
-
-	
-
----
-class: middle
-
-# A quick demo 
-
----
-
-## Simulate a network
-
-
-.left-code[
-
-Let's simulate a dense network with three blocks and 40 nodes per block.
-
-```r
-library(magrittr)
-library(tidyverse)
-library(sbmR)
-
-k &lt;- 3    
-n_k &lt;- 40 
-
-network &lt;- sim_basic_block_network(
-  n_blocks = k,     
-  n_nodes_per_block = n_k
-)
-
-visualize_network(network)
-```
-]
-
-.right-plot[
-
-]
-
-
----
-
-## Find optimal MCMC initialization
-
-
-.left-code[
-Next we find the optimal (closest to median of posterior) starting point for our MCMC
-
-```r
-# Setup SBM from data
-my_sbm &lt;- create_sbm(network)
-
-# Run agglomerative collapsing
-collapse_results &lt;- my_sbm %&gt;%
-  collapse_blocks(sigma = 1.01)
-
-# Visualize method used to 
-# choose best state from
-# results
-collapse_results %&gt;% 
-  visualize_collapse_results(
-    heuristic = 'delta_ratio'
-  ) +
-  xlim(0,15) +
-  geom_vline(xintercept = k)
-```
-]
-
-.right-plot[
-
-
-
-]
-
-
-
----
-
-## Sanity check...
-
-We can join the model's state after our collapse with the true generating data's blocks to see how well the collapsing algorithm fit the data. 
-.left-code[
-
-
-```r
-# Model state after merge
-merged_state &lt;- my_sbm %&gt;% 
-  get_state() %&gt;% 
-  select(id, parent)
-
-# Join with true block info
-left_join(
-  network$nodes,
-  merged_state,
-  by = "id"
-) %&gt;% 
-  rename(inferred = parent) %$% 
-  table(inferred, block) 
-```
-]
-
-.right-plot[
-
-]
-
----
-
-## Sampling from posterior
-
-
-.left-code[
-
-Run MCMC sweeps from collapse starting point to investigate the posterior structure.
-
-```r
-sweep_results &lt;- my_sbm %&gt;% 
-  mcmc_sweep(num_sweeps = 75, 
-             eps = 0.25, 
-             track_pairs = TRUE)
-
-# Plot Sweep Results
-sweep_results$sweep_info %&gt;% 
-  mutate(sweep = 1:n()) %&gt;%
-  pivot_longer(
-    c(entropy_delta,
-      num_nodes_moved)
-  ) %&gt;% 
-  ggplot(aes(x = sweep, 
-             y = value)) +
-  geom_line() +
-  facet_grid(name~., 
-             scales = "free_y")
-```
-]
-
-.right-plot[
-
-
-]
-
----
-
-## Investigating Uncertainty in clustering
-
-.left-code[
-
-Plot the pairwise probability two nodes residing in the same block
-
-```r
-sweep_results$pairing_counts %&gt;% 
-  ggplot(aes(x = node_a, 
-             y = node_b)) +
-  geom_raster(
-    aes(fill = proportion_connected)
-  ) +
-  theme(
-    axis.text = element_blank(),
-    axis.ticks = element_blank()
-  )
-```
-]
-
-.right-plot[
-
-
-]
-
-
----
-
-## Concensus-SNE
-
-.left-code[
-
-Package function to visualize the pairwise node to node block similarity with a network. 
-
-```r
-sweep_results %&gt;% 
-  visualize_propensity_network()
-```
-]
-
-.right-plot[
-
-
-]
-
-
----
-# Future plans
-
-.pull-left[
-## Node-level uncertainty 
-Determine which values are structural outliers
-]
-	
-.pull-right[
-## Lots of visualizations
-Visualization based inference for highly complex models
 ]
 
 ---
